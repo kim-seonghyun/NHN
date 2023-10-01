@@ -1,0 +1,71 @@
+package org.nhnacademy.tip;
+
+public interface Points2D {
+    public double x();
+    public double y();
+}
+
+interface Points3D extends Points2D{
+    public double z();
+
+    public static void main(String[] args) {
+
+        Points2D points2Dimpl = new points2Dimpl(1, 2);
+        Points3D points3Dimpl = new points3Dimpl(3, 4, 5);
+
+
+        //subtyping
+        // 이렇게 해서 Points2D의 methods 쓰게 됨, 유연성, 안정성 확보.
+        points2Dimpl = points3Dimpl;
+
+        System.out.println(points2Dimpl);
+    }
+}
+
+class points2Dimpl implements Points2D {
+    private int x;
+    private int y;
+
+    public points2Dimpl(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    @Override
+    public double x() {
+        return this.x;
+    }
+
+    @Override
+    public double y() {
+        return this.y;
+    }
+}
+
+class points3Dimpl implements Points3D {
+    private double x;
+    private double y;
+    private double z;
+
+    public points3Dimpl(double x, double y, double z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
+
+    @Override
+    public double x() {
+        return this.x;
+    }
+
+    @Override
+    public double y() {
+        return this.y;
+    }
+
+    @Override
+    public double z() {
+        return this.z;
+    }
+}
