@@ -35,7 +35,7 @@ public class TcpIpMultichatClient1 {
             this.socket = socket;
             try {
                 out = new DataOutputStream(socket.getOutputStream());
-                name = "[" + socket.getInetAddress() + ":" + socket.getPort() + "]";
+                name = "[" + socket.getInetAddress() + ":" + socket.getPort() + "]: ";
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
