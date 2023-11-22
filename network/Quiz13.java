@@ -107,10 +107,14 @@ public class Quiz13 {
                 while (in != null) {
                     String line = in.readUTF();
                     System.out.println(line);
-                    String cleanedInput = line.replaceAll("\\[.*?\\]", "").trim();
-                    if(cleanedInput.equals("!exit")){
-                        System.out.println("종료 안해?");
+                    if(getMessageContent(line).equals("!exit")){
                         break;
+                    }
+
+                    if (getMessageContent(line).equals("!list")) {
+                        Iterator iterator =  clients.keySet().iterator();
+                        iterator.forEachRemaining(System.out::println);
+                        continue;
                     }
                     broadCast(line);
                 }
@@ -127,6 +131,9 @@ public class Quiz13 {
         }
 
 
+    }
+    public String getMessageContent(String sentence){
+        return sentence.replaceAll("\\[.*?\\]", "").trim();
     }
 
 
